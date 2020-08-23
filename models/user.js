@@ -7,13 +7,12 @@ const UserSchema = new Schema({
     password: String,
 })
 
-
 UserSchema.pre('save', function(next) {
     const  SALT_WORK_FACTOR = 10;
 
     let user = this;
 
-    // only hash the password if it has been modified (or is new)
+    // hash password if modified/new
     if (!user.isModified('password')) return next();
 
     // generate a salt
@@ -24,18 +23,16 @@ UserSchema.pre('save', function(next) {
         bcrypt.hash(user.password, salt, function(err, hash) {
             if (err) return next(err);
 
-            // override the cleartext password with the hashed one
+            // override cleartext pw with hashed
             user.password = hash;
             next();
         });
     });
 });
 
-
 // UserSchema.methods.generateHash = function (password) {
 //     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 // };
-
 
 // checking if password is valid
 UserSchema.methods.validPassword = function (password) {
