@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // start the db
 dbURI = process.env.HOST
-console.log(dbURI)
+console.log(`mongoose connected: ${dbURI}`)
 
 dbOptions = {
     useNewUrlParser: true,
