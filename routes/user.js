@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User')
 const {check, validationResult} = require('express-validator');
 
-
 router.post('/register', [
         check('email', 'Please include a valid email').isEmail(),
         check('password', 'Password is required').isLength({min: 5}).exists(),
@@ -60,7 +59,7 @@ router.post('/login', async (req, res) => {
         let user = await User.findOne({email});
         const validationCheck = user.validPassword(password)
 
-        if(!validationCheck) {
+        if (!validationCheck) {
             return res.status(401).json({msg: 'invalid password'})
         }
 
