@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
     jwt.verify(token, process.env.SECRET, (err, user) => {
         console.log(err)
         if (err) return res.sendStatus(403)
-        req.user = user
+        req.user.id = user
         next() // pass the execution off to whatever request the client intended
     })
 }
