@@ -3,9 +3,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const api = require('./routes/api');
+const api = require('./routes/api/api');
 require('dotenv').config();
-const db = require('./src/db');
+require('./src/db');
 const auth = require('./middleware/auth');
 
 // new instance
