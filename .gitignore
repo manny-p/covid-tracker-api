@@ -2,7 +2,7 @@ node_modules
 .idea
 .env
 
-# User specific
+# Users specific
 **/.idea/**/workspace.xml
 **/.idea/**/tasks.xml
 **/.idea/shelf/*

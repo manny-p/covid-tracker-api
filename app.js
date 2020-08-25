@@ -6,7 +6,6 @@ const morgan = require('morgan');
 const api = require('./routes/api');
 require('dotenv').config();
 const db = require('./src/db');
-const user = require('./routes/user')
 const auth = require('./middleware/auth');
 
 // new instance
@@ -16,20 +15,13 @@ app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json({extended: true}));
 
-// Middleware
+// middleware
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-// routes
-app.get('/', (_, res) => {
-    res.status(200).json({
-        message: 'You made it'
-    })
-})
-
 // custom routes
 app.use('/api', auth, api)
-app.use('/user', user)
+require('./routes/users/')(app)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server listening on: ${process.env.PORT}`)
