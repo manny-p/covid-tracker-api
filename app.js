@@ -16,6 +16,10 @@ app.use(bodyParser.json({extended: true}))
 // middleware
 app.use(bodyParser.urlencoded({extended: true}))
 
+app.get('/', (_, res) => {
+    res.status(200).json({msg: 'sanity check'})
+})
+
 // custom routes
 require('./routes/api/')(app)
 require('./routes/users/')(app)

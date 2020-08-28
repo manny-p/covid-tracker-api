@@ -16,10 +16,10 @@ module.exports = async (req, res) => {
         const parsedCountries = JSON.parse(req.body.countries)
 
         // for every country in the body, add to list
-        parsedCountries.forEach(country => countrySet.add(country));
+        parsedCountries.forEach(country => countrySet.add(country))
 
-        // merge the countries they want to follow
-        results.countries = Array.from(countrySet);
+        // merge the countries the user wants to follow
+        results.countries = Array.from(countrySet)
 
         console.log(results.countries)
 
@@ -27,7 +27,6 @@ module.exports = async (req, res) => {
         await results.save()
 
         // remove the pw from user object
-        // delete results.password
         results.password = undefined
 
         // return the object to the client via JSON response.
