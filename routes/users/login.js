@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken')
 const User = require('../../models/User')
 
 module.exports = async (req, res) => {
@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     const password = req.body.password
 
     try {
-        let user = await User.findOne({email});
+        let user = await User.findOne({email})
         const validationCheck = user.validPassword(password)
 
         if (!validationCheck) {
@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
         }
 
         if (!user) {
-            return res.status(404).json({msg: 'User not found, please register'});
+            return res.status(404).json({msg: 'User not found, please register'})
         }
 
         const payload = {
@@ -31,12 +31,13 @@ module.exports = async (req, res) => {
             },
             (err, token) => {
                 if (err) throw err;
-                res.json({token});
+                user.password = undefined
+                res.json({token, user});
             },
         );
     } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
+        console.error(err.message)
+        res.status(500).send('Server Error!')
     }
 }
 

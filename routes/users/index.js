@@ -1,6 +1,6 @@
 const register = require('./register')
 const login = require('./login')
-const {check} = require('express-validator');
+const {check} = require('express-validator')
 
 
 module.exports = (app) => {
