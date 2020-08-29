@@ -7,6 +7,7 @@ module.exports = (req, res, next) => {
     const token = authHeader && authHeader.split(' ')[1]
     if (token == null) return res.sendStatus(401) // if there isn't any token
 
+    // console.log(token)
     jwt.verify(token, process.env.SECRET, (err, user) => {
         // console.log(err)
         if (err) return res.sendStatus(403)

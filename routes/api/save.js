@@ -1,11 +1,11 @@
-const User = require('../../models/User')
+const User = require("../../models/User")
 
 // @route    POST /api/set
 // @desc     Save a country
 // @access   Private
 
 module.exports = async (req, res) => {
-
+console.log(req.body.countries)
     try {
         // Get a copy of the user database object
         const results = await User.findById(req.user.user.id)
@@ -13,7 +13,10 @@ module.exports = async (req, res) => {
         // constructing a Set of countries
         const countrySet = new Set(results.countries)
 
-        const parsedCountries = JSON.parse(req.body.countries)
+
+        const parsedCountries = req.body.countries
+        // console.log('fuckkkkkkyioudskdhcbshjhb' + req.body.countries)
+        // debug complete
 
         // for every country in the body, add to list
         parsedCountries.forEach(country => countrySet.add(country))
@@ -21,7 +24,7 @@ module.exports = async (req, res) => {
         // merge the countries the user wants to follow
         results.countries = Array.from(countrySet)
 
-        console.log(results.countries)
+        console.log(`results ${results.countries}`)
 
         // Save the updated object into the database / save country results
         await results.save()
