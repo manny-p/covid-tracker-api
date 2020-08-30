@@ -1,10 +1,12 @@
 const express = require('express');
+require('dotenv').config();
+require('./src/db');
+
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const morgan = require('morgan');
-require('dotenv').config();
-require('./src/db');
+
 
 // a new instance of express
 const app = express();

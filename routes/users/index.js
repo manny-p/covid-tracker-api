@@ -1,6 +1,8 @@
 const register = require('./register')
 const login = require('./login')
 const {check} = require('express-validator')
+const auth = require('../../middleware/auth')
+const getUser = require('./get');
 
 
 module.exports = (app) => {
@@ -11,6 +13,7 @@ module.exports = (app) => {
         ], register)
 
     app.post('/users/login', login)
+    app.get('/users', auth, getUser)
 }
 
 

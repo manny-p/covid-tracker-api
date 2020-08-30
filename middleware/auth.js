@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
         if (err) return res.sendStatus(403)
         // req.user.id = user
         req.user = user
-        console.log(req.body.countries)
+        console.log("MADE IT TO AUTH!!!!")
         next() // pass the execution off to whatever request the client intended
     })
 }
