@@ -14,7 +14,8 @@ console.log(req.body.countries)
         const countrySet = new Set(results.countries)
 
 
-        const parsedCountries = req.body.countries
+        const parsedCountries = JSON.parse(req.body.countries)
+    
         // console.log('fuckkkkkkyioudskdhcbshjhb' + req.body.countries)
         // debug complete
 
@@ -33,7 +34,7 @@ console.log(req.body.countries)
         results.password = undefined
 
         // return the object to the client via JSON response.
-        res.status(200).json({msg: results})
+        res.status(200).json({results})
 
     } catch (err) {
         res.status(500).json({msg: `Server Error ${err.message}`})
