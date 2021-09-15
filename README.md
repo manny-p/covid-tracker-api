@@ -4,7 +4,8 @@
 
 ### Technologies
 ```
-Node, Express, JWT
+Node, Express, JWT, Mongoose, MongoDB Atlas
+
 ```
 
 ## covid-tracker client
