@@ -8,5 +8,5 @@ Node, Express, JWT, Mongoose, MongoDB Atlas
 
 ```
 
-## covid-tracker client
+## covid-tracker-client
 https://github.com/manny-p/covid-tracker-client
