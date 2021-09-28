@@ -1,4 +1,4 @@
-# Covid Tracker
+# Covid Tracker API
 
 ### Technologies
 ```
