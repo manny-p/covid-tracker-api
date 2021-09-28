@@ -3,7 +3,6 @@
 ### Technologies
 ```
 Node, Express, JWT, Mongoose, MongoDB Atlas
-
 ```
 
 ## Client
